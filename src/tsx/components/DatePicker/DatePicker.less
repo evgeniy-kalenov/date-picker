@@ -1,0 +1,136 @@
+@selected-day: #3b5edc;
+@current-day: #f0f2fd;
+@calendar-border: #e5e5e9;
+
+.date-picker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .date-picker__label {}
+
+  .date-picker__control {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .date-picker__control__input {
+      display: flex;
+
+      .date-input input {
+        width: 100px;
+        padding: 8px 6px;
+      }
+    }
+
+    .date-picker__control__calendar-button {
+      position: absolute;
+      right: 5px;
+      z-index: 10;
+      cursor: pointer;
+
+      &.calendar-button_disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .date-picker__calendar {
+    position: absolute;
+    top: 120%;
+    width: 260px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    -webkit-box-shadow: 0px 6px 10px 5px rgba(225,225,225,0.75);
+    -moz-box-shadow: 0px 6px 10px 5px rgba(225,225,225,0.75);
+    box-shadow: 0px 6px 10px 5px rgba(225,225,225,0.75);
+
+    .calendar__header,
+    .calendar__main,
+    .calendar__footer {
+      padding: 0 20px;
+      display: flex;
+    }
+
+    .calendar__header {
+      height: 50px;
+      border-bottom: 2px solid @calendar-border;
+
+      .calendar__header__title {
+        display: flex;
+        flex: 1;
+        align-items: center;
+      }
+      .calendar__header__buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > div {
+          cursor: pointer;
+          height: 100%;
+          width: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    .calendar__main {
+      flex: 1;
+      align-items: center;
+
+      .month-table {
+        width: 100%;
+        height: 100%;
+
+        tr:first-child {
+          font-weight: bold;
+        }
+
+        tr td {
+          vertical-align: center;
+          text-align: center;
+        }
+
+        tr:not(:first-child) td {
+          cursor: pointer;
+
+          &.month-table_current-day,
+          &.month-table_selected-day,
+          &:hover:not(:empty) {
+            border-radius: 11px;
+          }
+
+          &.month-table_current-day {
+            background-color: @current-day;
+          }
+
+          &.month-table_selected-day,
+          &:hover:not(:empty) {
+            background-color: @selected-day;
+            color: white;
+          }
+        }
+      }
+    }
+
+    .calendar__footer {
+      height: 50px;
+      justify-content: center;
+      align-items: center;
+      color: @selected-day;
+      font-weight: bold;
+      border-top: 2px solid @calendar-border;
+
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,9 @@
+.idea/
+node_modules/
+dist/**/*.js
+dist/**/*.jsx
+src/**/*.js
+src/**/*.jsx
+*.log.*
+yarn-error.log
+package-lock.json
